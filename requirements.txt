@@ -1,3 +1,4 @@
-streamlitnumpy
+streamlit
+numpy
 keras
 PIL
