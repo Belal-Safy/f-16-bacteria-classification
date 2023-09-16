@@ -13,7 +13,7 @@ st.title('Bacteria classification')
 st.header('Please upload an image for classification')
 
 # Upload file
-file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
+file = st.file_uploader('upload image', type=['jpeg', 'jpg', 'png'])
 
 if file is not None:
     image = Image.open(file).convert('RGB')
