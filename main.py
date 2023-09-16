@@ -1,10 +1,16 @@
 import streamlit as st
 from keras.models import load_model
 from PIL import Image
-
 from util import classify
-# Load classifier
-model = load_model('./final_model.h5')
+
+
+@st.cache_resource
+def load_classifier():
+    return load_model('./final_model.h5')
+
+
+# Load the classifier model
+model = load_classifier()
 
 # Set title
 st.title('Bacteria classification')
