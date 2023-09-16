@@ -1,12 +1,12 @@
 import streamlit as st
-from keras.models import load_model
+from tensorflow import keras
 from PIL import Image
 from util import classify
 
 
 @st.cache_resource
 def load_classifier():
-    return load_model('./final_model.h5')
+    return keras.models.load_model('./final_model.h5')
 
 
 # Load the classifier model
