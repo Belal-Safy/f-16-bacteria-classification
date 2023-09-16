@@ -1,29 +1,30 @@
 import streamlit as st
-# from keras.models import load_model
+from keras.models import load_model
 from PIL import Image
 
 from util import classify
+# Load classifier
+model = load_model('./final_model.h5')
 
-# set title
-st.title('Pneumonia classification')
+# Set title
+st.title('Bacteria classification')
 
-# set header
-st.header('Please upload a Bacteria image')
+# Set header
+st.header('Please upload an image for classification')
 
-# upload file
+# Upload file
 file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
 
-# load classifier
-# model = load_model('./model/pneumonia_classifier.h5')
-model = "sdf"
-
-# display image
 if file is not None:
     image = Image.open(file).convert('RGB')
     st.image(image, use_column_width=True)
 
-    # classify image
-    class_name = classify(image, model)
+    # Create a button for classification
+    if st.button("Start Classification"):
+        with st.spinner("Classifying..."):
+            # Call the classify function to get the class name
+            class_name = classify(image, model)
+            st.success("Classification complete!")
 
-    # write classification
-    st.write("## {}".format(class_name))
+        # Display the class name
+        st.write("## Predicted class: {}".format(class_name))
