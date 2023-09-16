@@ -8,7 +8,7 @@ from util import classify
 st.title('Pneumonia classification')
 
 # set header
-st.header('Please upload a chest X-ray image')
+st.header('Please upload a Bacteria image')
 
 # upload file
 file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
